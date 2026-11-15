@@ -1,0 +1,164 @@
+{
+  "info": {
+    "name": "ZapCheki API — WhatsApp + VoIP",
+    "description": "Coleção oficial para testar e integrar a ZapCheki API (rotas compatíveis com Evolution API v2 + telefonia VoIP nativa do WhatsApp).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8085" },
+    { "key": "apiKey", "value": "SUA_CHAVE_API" },
+    { "key": "instance", "value": "minha-instancia" },
+    { "key": "sessionId", "value": "" },
+    { "key": "callId", "value": "" }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "apikey", "type": "string" },
+      { "key": "value", "value": "{{apiKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "item": [
+    {
+      "name": "Saúde",
+      "item": [
+        {
+          "name": "Healthcheck",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "url": "{{baseUrl}}/health"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Instâncias (Evolution v2)",
+      "item": [
+        {
+          "name": "Criar instância",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"instanceName\": \"{{instance}}\",\n  \"qrcode\": true\n}" },
+            "url": "{{baseUrl}}/instance/create"
+          }
+        },
+        {
+          "name": "Obter QR Code / Conectar",
+          "request": { "method": "GET", "url": "{{baseUrl}}/instance/connect/{{instance}}" }
+        },
+        {
+          "name": "Estado da conexão",
+          "request": { "method": "GET", "url": "{{baseUrl}}/instance/connectionState/{{instance}}" }
+        },
+        {
+          "name": "Listar instâncias",
+          "request": { "method": "GET", "url": "{{baseUrl}}/instance/fetchInstances" }
+        },
+        {
+          "name": "Desconectar instância",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/instance/logout/{{instance}}" }
+        },
+        {
+          "name": "Excluir instância",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/instance/delete/{{instance}}" }
+        }
+      ]
+    },
+    {
+      "name": "Webhook",
+      "item": [
+        {
+          "name": "Configurar webhook",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"url\": \"https://seu-sistema.com/webhook/whatsapp\",\n  \"enabled\": true,\n  \"webhookByEvents\": false,\n  \"webhookBase64\": false\n}" },
+            "url": "{{baseUrl}}/webhook/set/{{instance}}"
+          }
+        },
+        {
+          "name": "Consultar webhook",
+          "request": { "method": "GET", "url": "{{baseUrl}}/webhook/find/{{instance}}" }
+        }
+      ]
+    },
+    {
+      "name": "Mensagens (Evolution v2)",
+      "item": [
+        {
+          "name": "Enviar texto",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"number\": \"5565999999999\",\n  \"text\": \"Olá! Mensagem enviada pela ZapCheki API.\"\n}" },
+            "url": "{{baseUrl}}/message/sendText/{{instance}}"
+          }
+        },
+        {
+          "name": "Enviar mídia (imagem/vídeo/documento)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"number\": \"5565999999999\",\n  \"mediatype\": \"image\",\n  \"media\": \"https://exemplo.com/imagem.png\",\n  \"caption\": \"Legenda opcional\"\n}" },
+            "url": "{{baseUrl}}/message/sendMedia/{{instance}}"
+          }
+        },
+        {
+          "name": "Enviar áudio de voz (PTT)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"number\": \"5565999999999\",\n  \"audio\": \"https://exemplo.com/audio.mp3\"\n}" },
+            "url": "{{baseUrl}}/message/sendWhatsAppAudio/{{instance}}"
+          }
+        },
+        {
+          "name": "Foto de perfil",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"number\": \"5565999999999\"\n}" },
+            "url": "{{baseUrl}}/chat/fetchProfilePictureUrl/{{instance}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Telefonia VoIP (Nativo)",
+      "item": [
+        {
+          "name": "Listar sessões VoIP",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/sessions" }
+        },
+        {
+          "name": "Iniciar ligação",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"phone\": \"5565999999999\",\n  \"record\": true\n}" },
+            "url": "{{baseUrl}}/api/sessions/{{sessionId}}/calls"
+          }
+        },
+        {
+          "name": "Atender ligação",
+          "request": { "method": "POST", "url": "{{baseUrl}}/api/sessions/{{sessionId}}/calls/{{callId}}/accept" }
+        },
+        {
+          "name": "Rejeitar ligação",
+          "request": { "method": "POST", "url": "{{baseUrl}}/api/sessions/{{sessionId}}/calls/{{callId}}/reject" }
+        },
+        {
+          "name": "Encerrar ligação",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/sessions/{{sessionId}}/calls/{{callId}}" }
+        },
+        {
+          "name": "Baixar gravação (.ogg)",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/sessions/{{sessionId}}/calls/{{callId}}/recording" }
+        }
+      ]
+    }
+  ]
+}

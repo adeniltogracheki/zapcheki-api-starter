@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="zc-bg" x1="12" y1="8" x2="116" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B1914" />
+      <stop offset="100%" stop-color="#07110E" />
+    </linearGradient>
+    <linearGradient id="zc-accent" x1="28" y1="24" x2="100" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="55%" stop-color="#25D366" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="zc-ring" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34D399" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.12" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base badge -->
+  <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#zc-bg)" stroke="url(#zc-ring)" stroke-width="2.5" />
+
+  <!-- Subtle signal arcs (VoIP + real-time stream) -->
+  <path d="M78 32C88.5 35.5 96.5 43.5 100 54" stroke="#34D399" stroke-width="3.5" stroke-linecap="round" stroke-opacity="0.45" />
+  <path d="M76 42C82.5 44.5 87.5 49.5 90 56" stroke="#34D399" stroke-width="3.5" stroke-linecap="round" stroke-opacity="0.8" />
+
+  <!-- Stylized Zap/Check + Voice Bolt inside speech/call contour -->
+  <path
+    d="M64 26C42.5 26 25 42.6 25 63.2C25 71.1 27.6 78.4 32.1 84.4L27.2 100.8L44.2 95.8C50.1 98.8 56.9 100.4 64 100.4C85.5 100.4 103 83.8 103 63.2"
+    stroke="url(#zc-accent)"
+    stroke-width="6.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Central audio pulse + lightning Z -->
+  <path
+    d="M47 64H54L59 50L67 77L73 59L77 64H84"
+    stroke="#ECFDF5"
+    stroke-width="5.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
