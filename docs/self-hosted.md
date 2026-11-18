@@ -7,6 +7,7 @@ Este guia é para quem quer rodar a API inteira dentro da própria infraestrutur
 - Linux (amd64 ou arm64) com systemd — Ubuntu, Debian, Oracle Linux, Rocky, Amazon Linux, etc.
 - Acesso root (`sudo`).
 - `curl` e `openssl` 3.x (já vêm na maioria das distribuições atuais).
+- `ffmpeg` instalado (`apt-get install ffmpeg` ou `dnf install ffmpeg`) — necessário para áudio de voz (PTT) e gravação de ligação. Sem ele, mensagens de texto e ligações sem gravação funcionam normalmente; o instalador avisa se ele estiver faltando.
 - Uma porta livre para o painel/API (padrão `127.0.0.1:8085`, só local por padrão).
 
 ## Instalar
