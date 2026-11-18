@@ -6,7 +6,7 @@
 
 **Conecte WhatsApp + Ligações de Voz (VoIP) no seu sistema, n8n, Chatwoot ou CRM em 2 minutos.**
 
-[**🚀 Gerar Chave Grátis (24h)**](https://api.gmtec.tec.br/) · [**🖥️ Instalar no seu servidor (grátis)**](#rodar-no-seu-proprio-servidor-self-hosted-gratis) · [**📦 Coleção Postman**](zapcheki-api.postman_collection.json) · [**💳 Planos a partir de R$ 57/mês**](https://api.gmtec.tec.br/#planos)
+[**🚀 Gerar Chave Grátis (24h)**](https://api.gmtec.tec.br/) · [**🖥️ Instalar no seu servidor (grátis)**](#rodar-no-seu-próprio-servidor-self-hosted-grátis) · [**📦 Coleção Postman**](zapcheki-api.postman_collection.json) · [**💳 Planos a partir de R$ 57/mês**](https://api.gmtec.tec.br/#planos)
 
 </div>
 
@@ -25,7 +25,7 @@ cd zapcheki-api-starter
 
 ---
 
-## Rodar no seu próprio servidor (self-hosted, grátis) {#rodar-no-seu-proprio-servidor-self-hosted-gratis}
+## Rodar no seu próprio servidor (self-hosted, grátis)
 
 Prefere rodar a API dentro do seu próprio servidor Linux, com os dados ficando só aí? Dá pra instalar com um comando — é o mesmo binário que roda em produção, assinado digitalmente e verificado pelo próprio instalador antes de rodar qualquer coisa.
 
